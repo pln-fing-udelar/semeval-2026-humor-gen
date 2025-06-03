@@ -1,14 +1,9 @@
-be
-have
-do
 say
 go
-can
 get
 would
 make
 know
-will
 think
 take
 see
@@ -22,7 +17,6 @@ give
 tell
 work
 may
-should
 call
 try
 ask

@@ -1,11 +1,9 @@
-other
 new
 good
 high
 old
 great
 big
-American
 small
 large
 national
@@ -22,7 +20,6 @@ real
 best
 right
 social
-only
 public
 sure
 low
