@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SemEval 2026 Task: HumorGen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .content-box {
+            @apply bg-white p-6 rounded-lg shadow-md mb-8;
+        }
+
+        .subtask-box {
+            @apply bg-blue-50 p-6 rounded-lg shadow-sm border border-blue-200;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Header -->
+<header class="bg-blue-600 text-white shadow-lg">
+    <div class="container mx-auto px-6 py-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold">HumorGen 2025-2026: a Competition on Humor&nbsp;Generation</h1>
+        <p class="mt-4 text-lg md:text-xl">Can computers be funny?</p>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-wrap justify-center items-center h-auto md:h-16 py-2 md:py-0">
+            <div class="flex flex-wrap justify-center space-x-4 md:space-x-8 text-sm md:text-base">
+                <a href="#about" class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">About</a>
+                <a href="#news" class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">News</a>
+                <a href="#subtasks" class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">Subtasks</a>
+                <a href="#dates" class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">Dates</a>
+                <a href="#data" class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">Data</a>
+                <a href="#evaluation"
+                   class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">Evaluation</a>
+                <a href="#organizers"
+                   class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">Organizers</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-500 transition duration-300 p-2">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="container mx-auto px-6 py-12">
+
+    <!-- About the Task Section -->
+    <section id="about" class="mb-16">
+        <div class="content-box">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <!-- Text Column -->
+                <div class="w-full md:w-2/3 lg:w-3/5">
+                    <p class="text-gray-700 leading-relaxed">
+                        While Humor Understanding has been the focus of many shared tasks, Humor Generation remains an
+                        even more
+                        challenging and largely unexplored frontier. The HumorGen task at <a
+                            href="https://semeval.github.io/SemEval2026/" target="_blank"
+                            class="text-blue-600 hover:underline">SemEval
+                        2026</a> is the first of its kind, dedicated to advancing the state-of-the-art in computational
+                        humor
+                        generation. We invite participants to develop systems capable of generating genuinely funny
+                        content
+                        under a variety of constraints.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mt-4">
+                        Our goal is to push models beyond memorization and towards true humorous creativity. By using
+                        carefully
+                        designed constraints, we aim to ensure fairness in evaluation and encourage the generation of
+                        novel
+                        jokes. This task has significant implications for more engaging conversational AI, creative
+                        writing
+                        tools, and a deeper understanding of the complex nature of humor itself.
+                    </p>
+                </div>
+                <!-- Image Column -->
+                <div class="w-full md:w-1/3 lg:w-2/5 flex-shrink-0">
+                    <img src="call_for_action.png" alt="I want you to make computers funny poster"
+                         class="w-full rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">News</h2>
+        <div class="content-box">
+            <ul class="list-disc list-inside text-gray-700 space-y-3">
+                <li>
+                    <span class="font-semibold" data-date="2025-07-15">July 15th, 2025</span>:
+                    This website was created and the sample data was released.
+                </li>
+            </ul>
+            <p class="text-sm text-gray-500 mt-4">All dates are 23:59 UTC-12h ("anywhere on Earth").</p>
+        </div>
+    </section>
+
+    <!-- Subtasks Section -->
+    <section id="subtasks" class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Subtasks</h2>
+
+        <!-- Warning Box -->
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-md mb-8" role="alert">
+            <p class="font-bold">Please Note:</p>
+            <p>The constraints listed and the subtasks' conditions below are still subject to change.</p>
+        </div>
+
+        <div class="space-y-8">
+            <!-- Subtask A -->
+            <div class="content-box">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">Subtask A: Text-based Humor Generation</h3>
+                <p class="text-gray-700 mb-4">Given a set of text-based constraints, generate a joke. This subtask will
+                    be conducted in <strong>English, Spanish, and Chinese</strong>.</p>
+                <div class="subtask-box">
+                    <h4 class="font-semibold text-lg mb-2">Constraints:</h4>
+                    <p class="text-gray-600">Each generated joke must follow a combination of three constraints,
+                        designed to make it difficult to simply retrieve existing jokes from the web. Constraints
+                        include:</p>
+                    <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                        <li><strong>Word Inclusion:</strong> Must contain a specific word (from a list of 100 words).
+                        </li>
+                        <li><strong>Style:</strong> Must adhere to a specific style (Dialogue, Anecdote, Q&A, or Archaic
+                            Language).
+                        </li>
+                        <li><strong>Topic:</strong> Must be about a specific topic (Sports, Tech, Travel, Education,
+                            Work, Daily Life, or Entertainment).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Subtask B -->
+            <div class="content-box">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">Subtask B: Multimodal Humor Generation with
+                    Images</h3>
+                <p class="text-gray-700 mb-4">This subtask explores humor in a multimodal context, combining visual
+                    inputs with text generation. This subtask is in <strong>English only</strong>.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="subtask-box">
+                        <h4 class="font-semibold text-lg mb-2">B1: Image-Based Caption Generation</h4>
+                        <p class="text-gray-600">Given an image, generate a free-form humorous caption (max 20 words)
+                            that
+                            enhances its comedic effect.</p>
+                    </div>
+                    <div class="subtask-box">
+                        <h4 class="font-semibold text-lg mb-2">B2: Image-Based Punchline Generation</h4>
+                        <p class="text-gray-600">Given an image and a text prompt with a blank, fill in the blank with a
+                            humorous punchline (max 10 words).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Section -->
+    <section id="data" class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Data and Resources</h2>
+        <div class="content-box">
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">No labels</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                In line with the task's focus on genuine generation over memorization, and given the diversity in Humor
+                and the hardship of evaluating jokes, <strong>we will not provide labeled data</strong>; we will provide
+                only inputs.
+                Participants are encouraged to use any publicly available data, pre-trained models, API, or
+                rule-based systems.
+            </p>
+
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Sample Data</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                To help participants understand the task format and constraints, we are providing a sample dataset.
+                We provide 100 samples for Subtask A and a version in Spanish.
+                For Subtask B, we provide 20 samples, which use constraints as in Subtask A, instead of the conditions
+                currently specified for Subtask B.
+            </p>
+            <a href="https://raw.githubusercontent.com/pln-fing-udelar/semeval-2026-humor-gen/refs/heads/main/examples.jsonl"
+               target="_blank"
+               class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition duration-300">
+                Sample Data for Subtask A (JSONL)
+            </a>
+            <a href="https://raw.githubusercontent.com/pln-fing-udelar/semeval-2026-humor-gen/refs/heads/main/spanish/examples_spanish.jsonl"
+               target="_blank"
+               class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition duration-300">
+                Sample Data for Subtask A in Spanish (JSONL)
+            </a>
+            <a href="https://raw.githubusercontent.com/pln-fing-udelar/semeval-2026-humor-gen/refs/heads/main/examples_images.jsonl"
+               target="_blank"
+               class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition duration-300">
+                Sample Data for Subtask B (JSONL)
+            </a>
+        </div>
+    </section>
+
+    <!-- Evaluation Section -->
+    <section id="evaluation" class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Evaluation</h2>
+        <div class="content-box">
+            <p class="text-gray-700 leading-relaxed">
+                Evaluation will be based on human preference judgments. We will use a pairwise comparison setup
+                ("battle"), where annotators choose the funnier of two generated texts produced under the same
+                conditions. We will use a web interface inspired by
+                <a href="https://lmarena.ai/" target="_blank" class="text-blue-600 hover:underline">Chatbot Arena</a> to
+                crowdsource annotations from anybody on the Internet. The systems will be ranked using an Elo-based
+                leaderboard.
+        </div>
+    </section>
+
+    <!-- Important Dates Section -->
+    <section id="dates" class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Important Dates</h2>
+        <div class="content-box">
+            <ul class="list-disc list-inside text-gray-700 space-y-3">
+                <li data-date="2025-09-01"><span class="font-semibold">"Training" data release:</span> September 1, 2025
+                </li>
+                <li data-date="2026-01-10"><span class="font-semibold">Evaluation period starts:</span> January 10, 2026
+                </li>
+                <li data-date="2026-01-31"><span class="font-semibold">Evaluation period ends:</span> January 31, 2026
+                </li>
+                <li data-date="2026-02-28"><span class="font-semibold">System description paper submission:</span>
+                    February 28, 2026
+                </li>
+                <li data-date="2026-03-31"><span class="font-semibold">Notification of acceptance:</span> March 31, 2026
+                </li>
+                <li data-date="2026-04-30"><span class="font-semibold">Camera-ready papers due:</span> April 30, 2026
+                </li>
+                <li data-date="2026-07-15"><span class="font-semibold">SemEval 2026 Workshop:</span> July 2026</li>
+            </ul>
+            <p class="text-sm text-gray-500 mt-4">All dates are 23:59 UTC-12h ("anywhere on Earth").</p>
+        </div>
+    </section>
+
+    <!-- Organizers Section -->
+    <section id="organizers" class="mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Organizers</h2>
+        <div class="content-box">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 text-gray-700">
+                <div><strong>Santiago Castro</strong><br><span class="text-sm text-gray-500">Universidad de la República / Netflix</span>
+                </div>
+                <div><strong>Ignacio Sastre</strong><br><span
+                        class="text-sm text-gray-500">Universidad de la República</span></div>
+                <div><strong>Julie-Anne Meaney</strong><br><span
+                        class="text-sm text-gray-500">University of Edinburgh</span></div>
+                <div><strong>Luis Chiruzzo</strong><br><span
+                        class="text-sm text-gray-500">Universidad de la República</span></div>
+                <div><strong>Naihao Deng</strong><br><span class="text-sm text-gray-500">University of Michigan</span>
+                </div>
+                <div><strong>Rada Mihalcea</strong><br><span class="text-sm text-gray-500">University of Michigan</span>
+                </div>
+                <div><strong>Salar Rahili</strong><br><span class="text-sm text-gray-500">Netflix</span></div>
+                <div><strong>Santiago Góngora</strong><br><span class="text-sm text-gray-500">Universidad de la República</span>
+                </div>
+                <div><strong>Aiala Rosá</strong><br><span
+                        class="text-sm text-gray-500">Universidad de la República</span></div>
+                <div><strong>Guillermo Moncecchi</strong><br><span class="text-sm text-gray-500">Universidad de la República</span>
+                </div>
+                <div><strong>Juan José Prada</strong><br><span
+                        class="text-sm text-gray-500">Universidad de la República</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Contact</h2>
+        <div class="content-box text-center">
+            <p class="text-gray-700 leading-relaxed">
+                For all inquiries, please join our official Google Group or email the organizers.
+            </p>
+            <div class="mt-6">
+                <a href="#"
+                   class="bg-blue-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-300 mr-4">Join
+                    Google Group (not ready yet)</a>
+                <a href="mailto:sacastro@fing.edu.uy"
+                   class="bg-gray-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition duration-300">Email
+                    Organizers</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white mt-16">
+    <div class="container mx-auto px-6 py-4 text-center">
+        <p>2025-2026 HumorGen</p>
+        <p class="text-sm text-gray-400 mt-2">
+            Part of <a href="https://semeval.github.io/SemEval2026/" target="_blank"
+                       class="underline hover:text-blue-300">SemEval 2026</a>.
+        </p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add relative time to dates
+    document.addEventListener('DOMContentLoaded', function () {
+        const timezone = 'Etc/GMT+12'; // UTC-12
+        const now = moment.tz(timezone);
+
+        document.querySelectorAll('[data-date]').forEach(element => {
+            const dateStr = element.dataset.date;
+            // Deadlines are at the end of the day in the specified timezone
+            const date = moment.tz(dateStr, timezone).endOf('day');
+            const timeAgo = date.from(now);
+
+            const timeAgoSpan = document.createElement('span');
+            timeAgoSpan.className = 'text-sm text-gray-500 ml-2';
+            timeAgoSpan.textContent = `(${timeAgo})`;
+
+            element.appendChild(timeAgoSpan);
+        });
+    });
+</script>
+
+</body>
+</html>
