@@ -119,8 +119,12 @@
                 </div>
                 <!-- Image Column -->
                 <div class="w-full md:w-1/3 lg:w-2/5 flex-shrink-0">
-                    <img src="img/mwahaha_600.webp" alt="I want you to make computers funny poster"
-                         class="w-full rounded-lg shadow-lg">
+                    <picture>
+                      <source srcset="img/mwahaha_600.avif" type="image/avif" />
+                      <source srcset="img/mwahaha_600.webp" type="image/webp" />
+                      <img src="img/mwahaha_600.png" alt="I want you to make computers funny poster"
+                           class="w-full rounded-lg shadow-lg">
+                    </picture>
                 </div>
             </div>
         </div>
