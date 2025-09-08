@@ -18,7 +18,7 @@ def read_file_names(path: str) -> list[str]:
 def main() -> None:
     words = read_lines("words.txt")
     topics = read_lines("topics.txt")
-    images = read_file_names("images")
+    images = read_file_names("../images")
 
     # Each image appears twice with different conditions
     for image in images:

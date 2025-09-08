@@ -5,7 +5,7 @@ import os
 
 NUM_OUTPUTS = 100
 NUM_CONDITIONS = 3
-PATH_SPANISH = 'spanish'
+PATH_SPANISH = '../spanish'
 
 def read_lines(path: str) -> list[str]:
     with open(path, encoding="utf-8") as file:
