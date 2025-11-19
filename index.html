@@ -421,10 +421,13 @@
 
 <script>
     dayjs().format();
+
     dayjs.extend(window.dayjs_plugin_utc);
     dayjs.extend(window.dayjs_plugin_timezone);
     dayjs.extend(window.dayjs_plugin_relativeTime);
     dayjs.extend(window.dayjs_plugin_localizedFormat);
+
+    dayjs.tz.setDefault("Etc/GMT+12"); // UTC-12
 
     // Smooth scrolling for navigation links.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -436,12 +439,13 @@
 
     // Add relative time to dates.
     document.addEventListener("DOMContentLoaded", () => {
-        const timezone = "Etc/GMT+12"; // UTC-12
+        const today = dayjs().endOf("day");  // Deadlines are at the end of the day.
+
+        const importantDatesDiv = document.getElementById("dates");
 
         document.querySelectorAll('[data-date]').forEach(element => {
-            // Deadlines are at the end of the day in the specified timezone.
-            const date = dayjs.tz(element.dataset.date, timezone).endOf("day")
-            const timeAgo = dayjs().to(date);
+            const date = dayjs(element.dataset.date).endOf("day");  // Deadlines are at the end of the day.
+            const timeAgo = today.to(date);
 
             const timeAgoSpan = document.createElement("span");
             timeAgoSpan.className = "text-sm text-gray-500 ml-2";
@@ -450,6 +454,10 @@
             element.textContent = date.format("ll");
 
             element.appendChild(timeAgoSpan);
+
+            if ((today > date) && importantDatesDiv.contains(element)) {
+                element.parentElement.innerHTML = `<s>${element.parentElement.innerHTML}</s>`;
+            }
         });
     });
 </script>
