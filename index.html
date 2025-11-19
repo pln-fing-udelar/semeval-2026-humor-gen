@@ -439,13 +439,14 @@
 
     // Add relative time to dates.
     document.addEventListener("DOMContentLoaded", () => {
-        const today = dayjs().endOf("day");  // Deadlines are at the end of the day.
+        const now = dayjs.tz();
+        const today = now.endOf("day");  // Deadlines are at the end of the day.
 
         const importantDatesDiv = document.getElementById("dates");
 
         document.querySelectorAll('[data-date]').forEach(element => {
-            const date = dayjs(element.dataset.date).endOf("day");  // Deadlines are at the end of the day.
-            const timeAgo = today.to(date);
+            const date = dayjs.tz(element.dataset.date).endOf("day");  // Deadlines are at the end of the day.
+            const timeAgo = now.to(date);
 
             const timeAgoSpan = document.createElement("span");
             timeAgoSpan.className = "text-sm text-gray-500 ml-2";
