@@ -29,6 +29,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localizedFormat.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.ico"/>
@@ -155,11 +156,11 @@
         <div class="content-box">
             <ul class="list-disc list-inside text-gray-700 space-y-3">
                 <li>
-                    <span class="font-semibold" data-date="2025-10-15">October 15th, 2025</span>:
+                    <span class="font-semibold" data-date="2025-10-15"></span>:
                     Evaluation trial phase data released and open to submissions.
                 </li>
                 <li>
-                    <span class="font-semibold" data-date="2025-09-01">September 1st, 2025</span>:
+                    <span class="font-semibold" data-date="2025-09-01"></span>:
                     The
                     <a href="https://www.codabench.org/competitions/9719/" class="text-blue-600 hover:underline">
                         CodaBench page
@@ -167,7 +168,7 @@
                     is available, including the first part of the dev data.
                 </li>
                 <li>
-                    <span class="font-semibold" data-date="2025-07-15">July 15th, 2025</span>:
+                    <span class="font-semibold" data-date="2025-07-15"></span>:
                     This website was created, and the sample data was released.
                 </li>
             </ul>
@@ -269,41 +270,41 @@
         <h2 class="text-4xl font-bold text-gray-800 mb-8 border-b-2 border-blue-500 pb-3">Important Dates</h2>
         <div class="content-box">
             <ul class="list-disc list-inside text-gray-700 space-y-3">
-                <li data-date="2025-09-01">
+                <li>
                     <span class="font-semibold">Development data release:</span>
-                    September 1, 2025
+                    <span data-date="2025-09-01"></span>
                 </li>
-                <li data-date="2025-10-15">
+                <li>
                     <span class="font-semibold">Evaluation trial phase starts:</span>
-                    October 15, 2025
+                    <span data-date="2025-10-15"></span>
                 </li>
-                <li data-date="2025-12-15">
+                <li>
                     <span class="font-semibold">Evaluation trial phase ends:</span>
-                    December 15, 2025
+                    <span data-date="2025-12-15"></span>
                 </li>
-                <li data-date="2026-01-10">
+                <li>
                     <span class="font-semibold">Evaluation period starts:</span>
-                    January 10, 2026
+                    <span data-date="2026-01-10"></span>
                 </li>
-                <li data-date="2026-01-31">
+                <li>
                     <span class="font-semibold">Evaluation period ends:</span>
-                    January 31, 2026
+                    <span data-date="2026-01-31"></span>
                 </li>
-                <li data-date="2026-02-28">
+                <li>
                     <span class="font-semibold">System description paper submission:</span>
-                    February 28, 2026
+                    <span data-date="2026-02-28"></span>
                 </li>
-                <li data-date="2026-03-31">
+                <li>
                     <span class="font-semibold">Notification of acceptance:</span>
-                    March 31, 2026
+                    <span data-date="2026-03-31"></span>
                 </li>
-                <li data-date="2026-04-30">
+                <li>
                     <span class="font-semibold">Camera-ready papers due:</span>
-                    April 30, 2026
+                    <span data-date="2026-04-30"></span>
                 </li>
-                <li data-date="2026-07-15">
-                    <span class="font-semibold">SemEval 2026 Workshop:</span>
-                    July 2026
+                <li>
+                    <span class="font-semibold">SemEval 2026 Workshop (approx.):</span>
+                    <span data-date="2026-07-15"></span>
                 </li>
             </ul>
             <p class="text-sm text-gray-500 mt-4">All dates are 23:59 UTC-12h ("anywhere on Earth").</p>
@@ -423,26 +424,30 @@
     dayjs.extend(window.dayjs_plugin_utc);
     dayjs.extend(window.dayjs_plugin_timezone);
     dayjs.extend(window.dayjs_plugin_relativeTime);
+    dayjs.extend(window.dayjs_plugin_localizedFormat);
 
     // Smooth scrolling for navigation links.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', e => {
+        anchor.addEventListener("click", e => {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+            document.querySelector(this.getAttribute("href")).scrollIntoView({behavior: "smooth"});
         });
     });
 
     // Add relative time to dates.
-    document.addEventListener('DOMContentLoaded', () => {
-        const timezone = 'Etc/GMT+12'; // UTC-12
+    document.addEventListener("DOMContentLoaded", () => {
+        const timezone = "Etc/GMT+12"; // UTC-12
 
         document.querySelectorAll('[data-date]').forEach(element => {
             // Deadlines are at the end of the day in the specified timezone.
-            const timeAgo = dayjs().to(dayjs.tz(element.dataset.date, timezone).endOf('day'));
+            const date = dayjs.tz(element.dataset.date, timezone).endOf("day")
+            const timeAgo = dayjs().to(date);
 
-            const timeAgoSpan = document.createElement('span');
-            timeAgoSpan.className = 'text-sm text-gray-500 ml-2';
+            const timeAgoSpan = document.createElement("span");
+            timeAgoSpan.className = "text-sm text-gray-500 ml-2";
             timeAgoSpan.textContent = `(${timeAgo})`;
+
+            element.textContent = date.format("ll");
 
             element.appendChild(timeAgoSpan);
         });
