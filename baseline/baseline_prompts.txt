@@ -1,0 +1,72 @@
+SemEval 2026 Task 1 - MWAHAHA baseline prompts
+
+** Task A (English):
+
+Two-word constraint prompt:
+
+Create a joke based on the following elements:
+
+Words to include: {word1, word2}
+
+Please craft a joke that incorporates all the specified elements. The joke should be concise, creative, and genuinely funny. All required words must appear somewhere in the joke.
+
+News title prompt:
+
+Create a joke based on this title of a news article:
+
+"{headline}"
+
+The joke should be concise, creative and genuinely funny. Only return the joke and nothing else.
+
+
+** Task A (Spanish):
+
+Two-word constraint prompt:
+
+Create a joke based on the following elements:
+
+Words to include: {word1, word2}
+
+Please craft a joke that incorporates all the specified elements. The joke should be concise, creative, and genuinely funny. All required words must appear somewhere in the joke. All jokes must be in spanish.
+
+News title prompt:
+
+Create a joke based on this title of a news article:
+
+"{headline}"
+
+The joke should be concise, creative and genuinely funny. Only return the joke and nothing else. All jokes must be in spanish.
+
+
+
+** Task A (Chinese):
+
+Two-word constraint prompt:
+
+Create a joke based on the following elements:
+
+Words to include: {word1, word2}
+
+Please craft a joke that incorporates all the specified elements. The joke should be concise, creative, and genuinely funny. All required words must appear somewhere in the joke. All jokes must be in chinese.
+
+News title prompt:
+
+Create a joke based on this title of a news article:
+
+"{headline}"
+
+The joke should be concise, creative and genuinely funny. Only return the joke and nothing else. All jokes must be in chinese.
+
+
+** Task B1:
+
+Create a joke based on the given GIF. The joke should be concise, creative and genuinely funny. Only return the joke and nothing else.
+
+
+** Task B2:
+
+Complete a joke based on the GIF and the following starting prompt:
+
+"{prompt}"
+
+The joke should be concise, creative and genuinely funny. Only return the joke and nothing else.
