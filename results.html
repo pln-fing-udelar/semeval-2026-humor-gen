@@ -144,10 +144,16 @@
                             Rank <span class="sort-icon ml-1"></span>
                         </div>
                     </th>
+                    <th class="px-6 py-4 cursor-pointer hover:bg-gray-100 group text-center dark:hover:bg-gray-700"
+                        data-key="teamName">
+                        <div class="flex items-center justify-center">
+                            Team Name <span class="sort-icon ml-1"></span>
+                        </div>
+                    </th>
                     <th class="px-6 py-4 cursor-pointer hover:bg-gray-100 group sort-header text-center dark:hover:bg-gray-700"
                         data-key="system">
                         <div class="flex items-center justify-center">
-                            System <span class="sort-icon ml-1"></span>
+                            Username <span class="sort-icon ml-1"></span>
                         </div>
                     </th>
                     <th class="px-6 py-4 cursor-pointer hover:bg-gray-100 group text-center sort-header dark:hover:bg-gray-700"
@@ -312,6 +318,7 @@
     // --- STATE & CONFIG ---
     let activeTab = "a-en";
     const dataSets = {};
+    let teamMap = {};
     let sortConfig = {key: 'rating', direction: 'desc'};
     const TASKS = ["a-en", "a-es", "a-zh", "b1", "b2"];
     let taskLastModified = {}; // Stores date strings per task
@@ -559,12 +566,18 @@
 
                 rank = row.final_ranking;
             }
+            const teamName = teamMap[row.system] || "";
             return `
                 <tr class="${rowClass} transition-colors duration-150 group border-b border-gray-100 dark:border-gray-800">
                     <td class="px-6 py-4 text-center font-medium">
                         <div class="flex justify-center items-center">
                             <span class="text-gray-500 font-mono dark:text-gray-400">${rank}</span>
                         </div>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <span class="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors dark:text-gray-100 dark:group-hover:text-blue-400">
+                            ${teamName}
+                        </span>
                     </td>
                     <td class="px-6 py-4 text-center">
                         <span class="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors dark:text-gray-100 dark:group-hover:text-blue-400">
@@ -610,6 +623,15 @@
     // --- DATA LOADING ---
 
     async function loadInitialData() {
+        try {
+            const teamMapResponse = await fetch("scores/team_map.json");
+            if (teamMapResponse.ok) {
+                teamMap = await teamMapResponse.json();
+            }
+        } catch (e) {
+            console.error("Error loading team map:", e);
+        }
+
         const promises = TASKS.map(async (task) => {
             try {
                 const response = await fetch(`scores/${task}.json`);
